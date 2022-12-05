@@ -4,19 +4,20 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
 
 public class MainMenu extends JFrame implements ActionListener {
-
-    JButton btnNew;
-    JButton btnShow;
-    JButton btnImport;
-    JButton btnExport;
+    static Color blackBasic = new Color(0x202124);
+    static Color qatarRed = new Color(0x8a1538);
+    private JButton btnNew;
+    private JButton btnShow;
+    private JButton btnImport;
+    private JButton btnExport;
 
     public MainMenu() {
         super("Welcome to World Cup Sweepstake");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(400,300);
+        this.setBackground(blackBasic);
         this.setLayout(new FlowLayout(FlowLayout.CENTER, 80, 25));
 
 
@@ -25,11 +26,12 @@ public class MainMenu extends JFrame implements ActionListener {
         btnImport = new JButton("Import from a file");
         btnExport = new JButton("Export to a file");
 
+
         btnNew.addActionListener(this);
         btnShow.addActionListener(this);
         btnImport.addActionListener(this);
         btnShow.addActionListener(this);
-
+        this.personalizingButtons();
         this.add(btnNew);
         this.add(btnShow);
         this.add(btnImport);
@@ -39,18 +41,30 @@ public class MainMenu extends JFrame implements ActionListener {
         this.setVisible(true);
 
     }
+
+    private void personalizingButtons() {
+        btnShow.setForeground(Color.white);
+        btnShow.setBackground(qatarRed);
+        btnShow.setFocusable(false);
+        btnNew.setForeground(Color.white);
+        btnNew.setBackground(qatarRed);
+        btnNew.setFocusable(false);
+        btnImport.setForeground(Color.white);
+        btnImport.setBackground(qatarRed);
+        btnImport.setFocusable(false);
+        btnExport.setForeground(Color.white);
+        btnExport.setBackground(qatarRed);
+        btnExport.setForeground(Color.white);
+        btnExport.setFocusable(false);
+
+    }
+
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
         if(actionEvent.getSource() == btnNew) {
             this.dispose();
-            try {
-                String name = JOptionPane.showInputDialog("Punter Name: ");
-                new KnockOutFrame(name);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            } catch (FontFormatException e) {
-                throw new RuntimeException(e);
-            }
+            String name = JOptionPane.showInputDialog("Punter Name: ");
+            new KnockOutFrame(name);
         }
     }
 }

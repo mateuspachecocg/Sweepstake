@@ -117,3 +117,18 @@ CREATE VIEW numberOfTeams AS SELECT Count(idTeam) 'numberTeams' FROM `bd_sweepst
 
 SELECT * FROM numberOfTeams;
 
+-- -----------------------------------------------------
+-- DATABASE DROPING  `bd_sweepstake`
+-- -----------------------------------------------------
+DROP DATABASE   `bd_sweepstake`;
+
+-- -----------------------------------------------------
+-- SELECT TO GET THE TEAMS`bd_sweepstake`.`sweepstakes`
+-- -----------------------------------------------------
+
+SELECT * FROM sweepstakes;
+
+
+SELECT sweepstakes.idSweepstake 'idBolao', sweepstakes.punterName 'Nome do Jogador', bd_sweepstake.teams.Name 'CAMPEAO'
+FROM sweepstakes natural join teams where idChampion = idTeam;
+

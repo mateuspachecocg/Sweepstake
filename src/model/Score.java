@@ -35,6 +35,10 @@ public class Score {
         return awayGoals;
     }
 
+    public void setGoals(int homeGoals, int awayGoals){
+        this.setHomeGoals(homeGoals);
+        this.setAwayGoals(awayGoals);
+    }
     public Team winnerTeam() {
         if (homeGoals > awayGoals)
             return homeTeam;

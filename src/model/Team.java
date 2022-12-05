@@ -17,6 +17,12 @@ public class Team {
         this.flag = new ImageIcon("icons/"+this.abv+".png");
     }
 
+    public Team(String abv, ImageIcon img) {
+        this.abv = abv;
+        this.name = name;
+        this.flag = img;
+    }
+
     public int getIdTeam() {
         return idTeam;
     }
