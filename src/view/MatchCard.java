@@ -44,6 +44,7 @@ public class MatchCard extends JPanel implements KeyListener {
         awayTf.setFont(new Font(null, Font.BOLD, 30));
         awayTf.setBounds(148, 34, 40, 40);
         awayTf.setBorder(BorderFactory.createLineBorder(Color.black));
+        awayTf.addKeyListener(this);
 
         this.add(homeTeamFlag);
         this.add(awayTeamFlag);
@@ -101,6 +102,24 @@ public class MatchCard extends JPanel implements KeyListener {
                 }
             } catch (NumberFormatException numberFormatException){
                 JOptionPane.showMessageDialog(null, "Please enter with a number", "Error", JOptionPane.INFORMATION_MESSAGE);
+                homeTf.setText("");
+            }
+        } else if(keyEvent.getSource() == awayTf && !awayTf.getText().isEmpty()) {
+            try {
+                if (Integer.parseInt(awayTf.getText()) > 40) {
+                    JOptionPane.showMessageDialog(null, "The number of goals have to less than 40", "Error", JOptionPane.INFORMATION_MESSAGE);
+                    awayTf.setText("");
+                }
+            } catch (NumberFormatException numberFormatException){
+                JOptionPane.showMessageDialog(null, "Please enter with a number", "Error", JOptionPane.INFORMATION_MESSAGE);
+                awayTf.setText("");
+            }
+        }
+
+        if (!awayTf.getText().isEmpty() && !homeTf.getText().isEmpty()) {
+            if (Integer.parseInt(homeTf.getText()) ==Integer.parseInt(awayTf.getText()) ){
+                JOptionPane.showMessageDialog(null, "The home and away goals has to be different", "Error", JOptionPane.INFORMATION_MESSAGE);
+                awayTf.setText("");
                 homeTf.setText("");
             }
         }

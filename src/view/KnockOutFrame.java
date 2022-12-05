@@ -26,7 +26,7 @@ public class KnockOutFrame extends JFrame {
         }
 
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setSize(1500, 720);
+        this.setSize(1347, 585);
         this.setLayout(null);
 
         topTitle = new JLabel("KnockOut");
@@ -43,20 +43,20 @@ public class KnockOutFrame extends JFrame {
         topPanel.setBorder(BorderFactory.createEtchedBorder());
 
         bottomPanel = new JPanel();
-        bottomPanel.setBounds(0,40, 1500,546);
+        bottomPanel.setBounds(0,40, 1500,498);
         bottomPanel.setBackground(bgColor);
         bottomPanel.setLayout(null);
 
         Team team1 = new Team(1, "NED", "NETHERLANDS");
         Team team2 = new Team(1, "BRA", "BRAZIL");
 
-        MatchCard matchCardA = new MatchCard(40, 50, team1, team2);
-        MatchCard matchCardB = new MatchCard(40, 322, team1, team2);
-        MatchCard matchCardC = new MatchCard(348, 186, team1, team2);
-        MatchCard matchCardD = new MatchCard(550, 30, team1, team2);
-        MatchCard matchCardE = new MatchCard(751, 186, team1, team2);
-        MatchCard matchCardF = new MatchCard(1059, 50, team1, team2);
-        MatchCard matchCardG = new MatchCard(1059, 322, team1, team2);
+        MatchCard matchCardA = new MatchCard(20, 50, team1, team2);
+        MatchCard matchCardB = new MatchCard(20, 322, team1, team2);
+        MatchCard matchCardC = new MatchCard(328, 186, team1, team2);
+        MatchCard matchCardD = new MatchCard(530, 30, team1, team2);
+        MatchCard matchCardE = new MatchCard(731, 186, team1, team2);
+        MatchCard matchCardF = new MatchCard(1039, 50, team1, team2);
+        MatchCard matchCardG = new MatchCard(1039, 322, team1, team2);
 
        bottomPanel.add(matchCardA);
        bottomPanel.add(matchCardB);
