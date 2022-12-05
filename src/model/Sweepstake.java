@@ -11,6 +11,10 @@ public class Sweepstake {
     public Sweepstake(int idSweepstake, String punterName) {
         this.idSweepstake = idSweepstake;
         this.punterName = punterName;
+
+        this.quarterFinal = new Stage(1, "Quarter-Final", 4);
+        this.semiFinal = new Stage(2, "Semi-Final", 2);
+        this.finalStage = new Stage(3, "Final", 1);
     }
 
     public int getIdSweepstake() {
@@ -33,15 +37,5 @@ public class Sweepstake {
         return finalStage;
     }
 
-    public void setQuarterFinal(Stage quarterFinal) {
-        this.quarterFinal = quarterFinal;
-    }
 
-    public void setSemiFinal(Stage semiFinal) {
-        this.semiFinal = semiFinal;
-    }
-
-    public void setFinalStage(Stage finalStage) {
-        this.finalStage = finalStage;
-    }
 }

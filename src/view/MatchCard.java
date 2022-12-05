@@ -1,5 +1,6 @@
 package view;
 
+import model.Score;
 import model.Team;
 
 import javax.swing.*;
@@ -8,17 +9,25 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class MatchCard extends JPanel implements KeyListener {
-    JLabel homeTeamFlag, awayTeamFlag, homeTeamName, awayTeamName;
+    JLabel homeTeamFlag, awayTeamFlag, homeTeamName, awayTeamName, statusLabel;
     JTextField homeTf, awayTf;
+    ImageIcon xIcon, checkIcon;
 
-    public MatchCard(int boundX0, int boundY0, Team home, Team away) {
+    public MatchCard(int boundX0, int boundY0, Score score) {
         super();
         this.setBounds(boundX0, boundY0, 288, 126);
         super.setBackground(new Color(0xFFFFFF));
         this.setBorder(BorderFactory.createEtchedBorder(Color.CYAN, Color.MAGENTA));
         this.setLayout(null);
 
+        xIcon = new ImageIcon("icons/x.png");
+        checkIcon = new ImageIcon("icons/check.png");
 
+        statusLabel = new JLabel(xIcon);
+        statusLabel.setBounds(136, 84, 16, 16);
+
+        Team home = score.getHomeTeam();
+        Team away = score.getAwayTeam();
 
         homeTeamFlag = new JLabel(home.getFlag());
         homeTeamFlag.setBounds(34, 32, 52, 35);
@@ -45,7 +54,7 @@ public class MatchCard extends JPanel implements KeyListener {
         awayTf.setBounds(148, 34, 40, 40);
         awayTf.setBorder(BorderFactory.createLineBorder(Color.black));
         awayTf.addKeyListener(this);
-
+        this.add(statusLabel);
         this.add(homeTeamFlag);
         this.add(awayTeamFlag);
         this.add(homeTeamName);
@@ -99,20 +108,27 @@ public class MatchCard extends JPanel implements KeyListener {
                 if (Integer.parseInt(homeTf.getText()) > 40) {
                     JOptionPane.showMessageDialog(null, "The number of goals have to less than 40", "Error", JOptionPane.INFORMATION_MESSAGE);
                     homeTf.setText("");
+                    statusLabel.setIcon(xIcon);
+
                 }
             } catch (NumberFormatException numberFormatException){
                 JOptionPane.showMessageDialog(null, "Please enter with a number", "Error", JOptionPane.INFORMATION_MESSAGE);
                 homeTf.setText("");
+                statusLabel.setIcon(xIcon);
+
             }
         } else if(keyEvent.getSource() == awayTf && !awayTf.getText().isEmpty()) {
             try {
                 if (Integer.parseInt(awayTf.getText()) > 40) {
                     JOptionPane.showMessageDialog(null, "The number of goals have to less than 40", "Error", JOptionPane.INFORMATION_MESSAGE);
                     awayTf.setText("");
+                    statusLabel.setIcon(xIcon);
+
                 }
             } catch (NumberFormatException numberFormatException){
                 JOptionPane.showMessageDialog(null, "Please enter with a number", "Error", JOptionPane.INFORMATION_MESSAGE);
                 awayTf.setText("");
+                statusLabel.setIcon(xIcon);
             }
         }
 
@@ -121,6 +137,9 @@ public class MatchCard extends JPanel implements KeyListener {
                 JOptionPane.showMessageDialog(null, "The home and away goals has to be different", "Error", JOptionPane.INFORMATION_MESSAGE);
                 awayTf.setText("");
                 homeTf.setText("");
+                statusLabel.setIcon(xIcon);
+            } else {
+                statusLabel.setIcon(checkIcon);
             }
         }
     }

@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 public class MainMenu extends JFrame implements ActionListener {
 
@@ -40,6 +41,16 @@ public class MainMenu extends JFrame implements ActionListener {
     }
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
-
+        if(actionEvent.getSource() == btnNew) {
+            this.dispose();
+            try {
+                String name = JOptionPane.showInputDialog("Punter Name: ");
+                new KnockOutFrame(name);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            } catch (FontFormatException e) {
+                throw new RuntimeException(e);
+            }
+        }
     }
 }

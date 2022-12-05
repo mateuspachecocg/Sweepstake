@@ -14,6 +14,11 @@ public class Score {
         this.awayGoals = awayGoals;
     }
 
+    public Score(Team homeTeam, Team awayTeam) {
+        this.homeTeam = homeTeam;
+        this.awayTeam = awayTeam;
+    }
+
     public Team getHomeTeam() {
         return homeTeam;
     }
@@ -37,5 +42,13 @@ public class Score {
             return awayTeam;
         else
             return null;
+    }
+
+    public void setHomeGoals(int homeGoals) {
+        this.homeGoals = homeGoals;
+    }
+
+    public void setAwayGoals(int awayGoals) {
+        this.awayGoals = awayGoals;
     }
 }
