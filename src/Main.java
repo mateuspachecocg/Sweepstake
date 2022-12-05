@@ -7,9 +7,7 @@ import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) throws IOException, FontFormatException {
-        // new MainMenu();
-
-        SweepstakeDAO swpt = new SweepstakeDAO();
-        System.out.println(swpt.getGreaterSweepstakeIndex());
+        //new MainMenu();
+        new KnockOutFrame();
     }
 }

@@ -1,25 +1,25 @@
 package view;
 
+import model.Team;
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
-public class MatchCard extends JPanel {
+public class MatchCard extends JPanel implements KeyListener {
     JLabel homeTeamFlag, awayTeamFlag, homeTeamName, awayTeamName;
     ImageIcon homeIcon, awayIcon;
     JTextField homeTf, awayTf;
 
-    public MatchCard(int boundX0, int boundY0, String home, String away) {
+    public MatchCard(int boundX0, int boundY0, Team home, Team away) {
         super();
         this.setBounds(boundX0, boundY0, 288, 126);
         super.setBackground(new Color(0xFFFFFF));
         this.setBorder(BorderFactory.createLineBorder(Color.red));
         this.setLayout(null);
 
-        homeIcon = new ImageIcon("icons/" + home + ".png");
-        awayIcon = new ImageIcon("icons/" + away + ".png");
 
-        homeTeamName = new JLabel(home);
-        awayTeamName = new JLabel(away);
 
         homeTeamFlag = new JLabel(homeIcon);
         homeTeamFlag.setBounds(34, 32, 52, 35);
@@ -27,10 +27,10 @@ public class MatchCard extends JPanel {
         awayTeamFlag = new JLabel(awayIcon);
         awayTeamFlag.setBounds(208, 32, 52, 35);
 
-        homeTeamName = new JLabel(home, SwingConstants.CENTER);
+        homeTeamName = new JLabel(home.getAbv(), SwingConstants.CENTER);
         homeTeamName.setBounds(34, 77, 52, 12);
 
-        awayTeamName = new JLabel(away, SwingConstants.CENTER);
+        awayTeamName = new JLabel(away.getAbv(), SwingConstants.CENTER);
         awayTeamName.setBounds(208, 77, 52, 12);
 
         homeTf = new JTextField();
@@ -38,6 +38,7 @@ public class MatchCard extends JPanel {
         homeTf.setFont(new Font(null, Font.BOLD, 30));
         homeTf.setBounds(106, 34, 40, 40);
         homeTf.setBorder(BorderFactory.createLineBorder(Color.black));
+        homeTf.addKeyListener(this);
 
         awayTf = new JTextField();
         awayTf.setHorizontalAlignment(JTextField.CENTER);
@@ -54,7 +55,16 @@ public class MatchCard extends JPanel {
 
     }
 
-    public int getHomeScore() {
+    public int getHomeGoals() {
+        try {
+            return Integer.parseInt(homeTf.getText());
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
+        return -1;
+    }
+
+    public int getAwayGoals() {
         try {
             return Integer.parseInt(homeTf.getText());
         } catch (Exception e) {
@@ -70,5 +80,30 @@ public class MatchCard extends JPanel {
             // TODO: handle exception
         }
         return -1;
+    }
+
+    @Override
+    public void keyTyped(KeyEvent keyEvent) {
+
+    }
+
+    @Override
+    public void keyPressed(KeyEvent keyEvent) {
+        if(keyEvent.getSource() == homeTf) {
+            try {
+                if (Integer.parseInt(homeTf.getText()) > 40) {
+                    JOptionPane.showMessageDialog(null, "The number of goals have to less than 40", "Error", JOptionPane.INFORMATION_MESSAGE);
+                    homeTf.setText("");
+                }
+            } catch (NumberFormatException numberFormatException){
+                JOptionPane.showMessageDialog(null, "Please enter with a number", "Error", JOptionPane.INFORMATION_MESSAGE);
+                homeTf.setText("");
+            }
+        }
+    }
+
+    @Override
+    public void keyReleased(KeyEvent keyEvent) {
+
     }
 }

@@ -1,5 +1,7 @@
 package view;
 
+import model.Team;
+
 import javax.swing.*;
 import java.awt.*;
 import java.io.File;
@@ -14,9 +16,9 @@ public class KnockOutFrame extends JFrame {
     public KnockOutFrame() throws IOException, FontFormatException {
 
         try{
-            poppins = Font.createFont(Font.TRUETYPE_FONT, new File("font/Poppins-Medium.ttf")).deriveFont(18f);
+            poppins = Font.createFont(Font.TRUETYPE_FONT, new File("Poppins-Regular.ttf")).deriveFont(18f);
             GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-            ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("font/Poppins-Medium.ttf")));
+            ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("Poppins-Regular.ttf")));
         } catch (IOException e) {
             throw new RuntimeException(e);
         } catch (FontFormatException e) {
@@ -43,7 +45,8 @@ public class KnockOutFrame extends JFrame {
         bottomPanel.setBackground(bgColor);
         bottomPanel.setLayout(null);
 
-//        MatchCard matchCard1 = new MatchCard(146, 66);
+        Team team = new Team(1, "NED", "NETHERLANDS");
+        MatchCard matchCard1 = new MatchCard(146, 66, team, team);
 //        MatchCard matchCard2 = new MatchCard(146, 151);
 //        MatchCard matchCard3 = new MatchCard(146, 276);
 //        MatchCard matchCard4 = new MatchCard(146, 361);
@@ -53,7 +56,7 @@ public class KnockOutFrame extends JFrame {
 //        MatchCard matchCard8 = new MatchCard(970, 361);
 //
 //
-//        bottomPanel.add(matchCard1);
+       bottomPanel.add(matchCard1);
 //        bottomPanel.add(matchCard2);
 //        bottomPanel.add(matchCard3);
 //        bottomPanel.add(matchCard4);
