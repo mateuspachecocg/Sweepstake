@@ -1,0 +1,95 @@
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
+
+-- -----------------------------------------------------
+-- Schema bd_sweepstake
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `bd_sweepstake` DEFAULT CHARACTER SET utf8 ;
+USE `bd_sweepstake` ;
+
+-- -----------------------------------------------------
+-- Table `bd_sweepstake`.`teams`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `bd_sweepstake`.`teams` (
+  `idTeam` INT NOT NULL AUTO_INCREMENT,
+  `Abv` CHAR(3) NOT NULL,
+  `Name` VARCHAR(45) NULL,
+  PRIMARY KEY (`idTeam`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+-- -----------------------------------------------------
+-- Table `bd_sweepstake`.`stages`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `bd_sweepstake`.`stages` (
+  `idStage` INT NOT NULL AUTO_INCREMENT,
+  `Name` VARCHAR(25) NOT NULL,
+  `numberMatches` INT NOT NULL,
+  PRIMARY KEY (`idStage`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+-- -----------------------------------------------------
+-- Table `bd_sweepstake`.`sweepstakes`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `bd_sweepstake`.`sweepstakes` (
+  `idSweepstake` INT NOT NULL AUTO_INCREMENT,
+  `punterName` VARCHAR(45) NOT NULL,
+  `idChampion` INT NOT NULL,
+  PRIMARY KEY (`idSweepstake`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+-- -----------------------------------------------------
+-- Table `bd_sweepstake`.`scores`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `bd_sweepstake`.`scores` (
+  `idScore` INT NOT NULL AUTO_INCREMENT,
+  `idHomeTeam` INT NOT NULL,
+  `idAwayTeam` INT NOT NULL,
+  `goalsHome`INT NOT NULL,
+  `goalsAway` INT NOT NULL,
+  `idSweepstake` INT NOT NULL,
+  PRIMARY KEY (`idScore`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+-- -----------------------------------------------------
+-- INSERINDO NA TABELA `bd_sweepstake`.`teams`
+-- -----------------------------------------------------
+
+INSERT INTO `bd_sweepstake`.`teams` (`Abv`, `Name`) 
+VALUES  ('NED', 'NETHERLANDS'),
+        ('ARG', 'ARGENTINA'), 
+        ('ENG', 'ENGLAND'), 
+        ('FRA', 'FRANCE'),
+        ('JPN', 'JAPAN'),
+        ('BRA', 'BRAZIL'),
+        ('ESP', 'SPAIN'),
+        ('POR', 'PORTUGAL');
+-- -----------------------------------------------------
+-- INSERINDO NA TABELA `bd_sweepstake`.`stages`
+-- -----------------------------------------------------
+
+INSERT INTO `bd_sweepstake`.`stages` (`Name`, `numberMatches`)
+VALUES  ('Quarter-Final', 4),
+        ('Semi-final', 2),
+        ('Final', 1);
+
+-- -----------------------------------------------------
+-- INSERINDO NA TABELA `bd_sweepstake`.`sweepstakes`
+-- -----------------------------------------------------
+INSERT INTO `sweepstakes` (`punterName`, `idChampion`) 
+VALUES ('Mateus', '6');
+
+-- -----------------------------------------------------
+-- INSERINDO NA TABELA `bd_sweepstake`.`sweepstakes`
+-- -----------------------------------------------------
+
+
+-- -----------------------------------------------------
+-- VIU PARA VER O MAIOR ID DA TABELA BOLAO
+-- -----------------------------------------------------
+
+CREATE VIEW greaterIdSweepstake AS SELECT MAX(IdSweepstake) 'maxId' FROM sweepstakes;
