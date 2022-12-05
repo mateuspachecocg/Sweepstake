@@ -9,22 +9,21 @@ import java.awt.event.KeyListener;
 
 public class MatchCard extends JPanel implements KeyListener {
     JLabel homeTeamFlag, awayTeamFlag, homeTeamName, awayTeamName;
-    ImageIcon homeIcon, awayIcon;
     JTextField homeTf, awayTf;
 
     public MatchCard(int boundX0, int boundY0, Team home, Team away) {
         super();
         this.setBounds(boundX0, boundY0, 288, 126);
         super.setBackground(new Color(0xFFFFFF));
-        this.setBorder(BorderFactory.createLineBorder(Color.red));
+        this.setBorder(BorderFactory.createEtchedBorder(Color.CYAN, Color.MAGENTA));
         this.setLayout(null);
 
 
 
-        homeTeamFlag = new JLabel(homeIcon);
+        homeTeamFlag = new JLabel(home.getFlag());
         homeTeamFlag.setBounds(34, 32, 52, 35);
 
-        awayTeamFlag = new JLabel(awayIcon);
+        awayTeamFlag = new JLabel(away.getFlag());
         awayTeamFlag.setBounds(208, 32, 52, 35);
 
         homeTeamName = new JLabel(home.getAbv(), SwingConstants.CENTER);
@@ -89,7 +88,12 @@ public class MatchCard extends JPanel implements KeyListener {
 
     @Override
     public void keyPressed(KeyEvent keyEvent) {
-        if(keyEvent.getSource() == homeTf) {
+
+    }
+
+    @Override
+    public void keyReleased(KeyEvent keyEvent) {
+        if(keyEvent.getSource() == homeTf && !homeTf.getText().isEmpty()) {
             try {
                 if (Integer.parseInt(homeTf.getText()) > 40) {
                     JOptionPane.showMessageDialog(null, "The number of goals have to less than 40", "Error", JOptionPane.INFORMATION_MESSAGE);
@@ -100,10 +104,5 @@ public class MatchCard extends JPanel implements KeyListener {
                 homeTf.setText("");
             }
         }
-    }
-
-    @Override
-    public void keyReleased(KeyEvent keyEvent) {
-
     }
 }

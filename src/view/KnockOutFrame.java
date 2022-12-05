@@ -26,7 +26,8 @@ public class KnockOutFrame extends JFrame {
         }
 
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setSize(1263, 713);
+        this.setSize(1500, 720);
+        this.setLayout(null);
 
         topTitle = new JLabel("KnockOut");
         topTitle.setBounds(0, 0, 89,29);
@@ -34,36 +35,36 @@ public class KnockOutFrame extends JFrame {
         topTitle.setForeground(new Color(0x03122B));
 
         topPanel = new JPanel();
-        topPanel.setSize(new Dimension(1263, 37));
+        topPanel.setBounds(0,0, 1500,37);
+        //topPanel.setSize(new Dimension(1360, 37));
         topPanel.setBackground(bgColor);
         topPanel.setLayout(null);
         topPanel.add(topTitle);
         topPanel.setBorder(BorderFactory.createEtchedBorder());
 
         bottomPanel = new JPanel();
-        bottomPanel.setSize(1263, 546);
+        bottomPanel.setBounds(0,40, 1500,546);
         bottomPanel.setBackground(bgColor);
         bottomPanel.setLayout(null);
 
-        Team team = new Team(1, "NED", "NETHERLANDS");
-        MatchCard matchCard1 = new MatchCard(146, 66, team, team);
-//        MatchCard matchCard2 = new MatchCard(146, 151);
-//        MatchCard matchCard3 = new MatchCard(146, 276);
-//        MatchCard matchCard4 = new MatchCard(146, 361);
-//        MatchCard matchCard5= new MatchCard(970, 66);
-//        MatchCard matchCard6 = new MatchCard(970, 151);
-//        MatchCard matchCard7 = new MatchCard(970, 276);
-//        MatchCard matchCard8 = new MatchCard(970, 361);
-//
-//
-       bottomPanel.add(matchCard1);
-//        bottomPanel.add(matchCard2);
-//        bottomPanel.add(matchCard3);
-//        bottomPanel.add(matchCard4);
-//        bottomPanel.add(matchCard5);
-//        bottomPanel.add(matchCard6);
-//        bottomPanel.add(matchCard7);
-//        bottomPanel.add(matchCard8);
+        Team team1 = new Team(1, "NED", "NETHERLANDS");
+        Team team2 = new Team(1, "BRA", "BRAZIL");
+
+        MatchCard matchCardA = new MatchCard(40, 50, team1, team2);
+        MatchCard matchCardB = new MatchCard(40, 322, team1, team2);
+        MatchCard matchCardC = new MatchCard(348, 186, team1, team2);
+        MatchCard matchCardD = new MatchCard(550, 30, team1, team2);
+        MatchCard matchCardE = new MatchCard(751, 186, team1, team2);
+        MatchCard matchCardF = new MatchCard(1059, 50, team1, team2);
+        MatchCard matchCardG = new MatchCard(1059, 322, team1, team2);
+
+       bottomPanel.add(matchCardA);
+       bottomPanel.add(matchCardB);
+       bottomPanel.add(matchCardC);
+       bottomPanel.add(matchCardD);
+       bottomPanel.add(matchCardE);
+       bottomPanel.add(matchCardF);
+       bottomPanel.add(matchCardG);
 
         this.add(topPanel);
         this.add(bottomPanel);
