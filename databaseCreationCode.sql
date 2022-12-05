@@ -50,6 +50,7 @@ CREATE TABLE IF NOT EXISTS `bd_sweepstake`.`scores` (
   `idAwayTeam` INT NOT NULL,
   `goalsHome`INT NOT NULL,
   `goalsAway` INT NOT NULL,
+  `idStage` INT NOT NULL,
   `idSweepstake` INT NOT NULL,
   PRIMARY KEY (`idScore`))
 ENGINE = InnoDB
@@ -84,10 +85,21 @@ INSERT INTO `sweepstakes` (`punterName`, `idChampion`)
 VALUES ('Mateus', '6');
 
 -- -----------------------------------------------------
+-- INSERINDO NA TABELA `bd_sweepstake`.`scores`
+-- -----------------------------------------------------
+INSERT INTO `scores` (`idScore`, `idHomeTeam`, `idAwayTeam`, `goalsHome`, `goalsAway`,  `idStage`, `idSweepstake`)
+VALUES (NULL, ?, ?, ?, ?, ?, ?);
+-- -----------------------------------------------------
 -- SELECT TO GET THE TEAMS`bd_sweepstake`.`teams`
 -- -----------------------------------------------------
 
 SELECT * FROM teams;
+
+-- -----------------------------------------------------
+-- SELECT TO GET THE TEAMS`bd_sweepstake`.`scores`
+-- -----------------------------------------------------
+
+SELECT * FROM scores;
 
 -- -----------------------------------------------------
 -- VIEW TO SEE THE GREATER ID IN TABLE `bd_sweepstake`.`sweepstakes`

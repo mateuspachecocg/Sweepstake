@@ -41,7 +41,7 @@ public class SweepstakeDAO {
         Connection connection = new ConnectionFactory().getConnection();
 
         try {
-            ResultSet result = connection.prepareStatement("SELECT * FROM numberOfTeams;").executeQuery();
+            ResultSet result = connection.prepareStatement("SELECT * FROM `numberOfTeams`;").executeQuery();
             if(result.next()) {
                 return result.getInt("numberTeams");
             }
@@ -52,7 +52,7 @@ public class SweepstakeDAO {
     }
 
 
-    public int getGreaterSweepstakeIndex() {
+    public int getGreaterSweepstakeId() {
         Connection connection = new ConnectionFactory().getConnection();
 
         try {
@@ -78,14 +78,15 @@ public class SweepstakeDAO {
             insertSweepstake.execute();
 
             PreparedStatement insertScore = connection.prepareStatement(
-                    "INSERT INTO `scores` (`idScore`, `idHomeTeam`, `idAwayTeam`, `goalsHome`, `goalsAway`, `idSweepstake`) " +
-                            "VALUES (NULL, ?, ?, ?, ?, ?);");
+                    "INSERT INTO `scores` (`idScore`, `idHomeTeam`, `idAwayTeam`, `goalsHome`, `goalsAway`,  `idStage`, `idSweepstake`) " +
+                            "VALUES (NULL, ?, ?, ?, ?, ?, ?);");
             insertScore.setInt(5, swpt.getIdSweepstake());
             for (Score score: swpt.getQuarterFinal().getScores()) {
                 insertScore.setInt(1, score.getHomeTeam().getIdTeam());
                 insertScore.setInt(2, score.getAwayTeam().getIdTeam());
                 insertScore.setInt(3, score.getHomeGoals());
-                insertScore.setInt(4, score.getAwayGoals());
+                insertScore.setInt(4, 1);
+                insertScore.setInt(5, score.getAwayGoals());
                 insertScore.execute();
             }
 
@@ -93,7 +94,8 @@ public class SweepstakeDAO {
                 insertScore.setInt(1, score.getHomeTeam().getIdTeam());
                 insertScore.setInt(2, score.getAwayTeam().getIdTeam());
                 insertScore.setInt(3, score.getHomeGoals());
-                insertScore.setInt(4, score.getAwayGoals());
+                insertScore.setInt(4, 2);
+                insertScore.setInt(5, score.getAwayGoals());
                 insertScore.execute();
             }
 
@@ -101,7 +103,8 @@ public class SweepstakeDAO {
                 insertScore.setInt(1, score.getHomeTeam().getIdTeam());
                 insertScore.setInt(2, score.getAwayTeam().getIdTeam());
                 insertScore.setInt(3, score.getHomeGoals());
-                insertScore.setInt(4, score.getAwayGoals());
+                insertScore.setInt(4, 2);
+                insertScore.setInt(5, score.getAwayGoals());
                 insertScore.execute();
             }
 
