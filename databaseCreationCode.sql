@@ -89,7 +89,18 @@ VALUES ('Mateus', '6');
 
 
 -- -----------------------------------------------------
--- VIU PARA VER O MAIOR ID DA TABELA BOLAO
+-- VIEW TO SEE THE GREATER ID IN TABLE `bd_sweepstake`.`sweepstakes`
 -- -----------------------------------------------------
 
-CREATE VIEW greaterIdSweepstake AS SELECT MAX(IdSweepstake) 'maxId' FROM sweepstakes;
+CREATE VIEW greaterIdSweepstake AS SELECT MAX(IdSweepstake) 'maxId' FROM `bd_sweepstake`.`sweepstakes`;
+
+SELECT * FROM greaterIdSweepstake;
+
+-- -----------------------------------------------------
+-- VIEW TO SEE THE GREATER ID IN TABLE `bd_sweepstake`.`sweepstakes`
+-- -----------------------------------------------------
+
+CREATE VIEW numberOfTeams AS SELECT Count(idTeam) 'numberTeams' FROM `bd_sweepstake`.`teams` ;
+
+SELECT * FROM numberOfTeams;
+
