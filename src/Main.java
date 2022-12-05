@@ -1,4 +1,5 @@
 import control.SweepstakeDAO;
+import model.Team;
 import view.KnockOutFrame;
 import view.MainMenu;
 

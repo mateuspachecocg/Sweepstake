@@ -84,9 +84,10 @@ INSERT INTO `sweepstakes` (`punterName`, `idChampion`)
 VALUES ('Mateus', '6');
 
 -- -----------------------------------------------------
--- INSERINDO NA TABELA `bd_sweepstake`.`sweepstakes`
+-- SELECT TO GET THE TEAMS`bd_sweepstake`.`teams`
 -- -----------------------------------------------------
 
+SELECT * FROM teams;
 
 -- -----------------------------------------------------
 -- VIEW TO SEE THE GREATER ID IN TABLE `bd_sweepstake`.`sweepstakes`
