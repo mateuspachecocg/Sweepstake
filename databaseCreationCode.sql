@@ -60,13 +60,13 @@ DEFAULT CHARACTER SET = utf8;
 -- INSERINDO NA TABELA `bd_sweepstake`.`teams`
 -- -----------------------------------------------------
 
-INSERT INTO `bd_sweepstake`.`teams` (`Abv`, `Name`) 
+INSERT INTO `bd_sweepstake`.`teams` (`Abv`, `Name`)
 VALUES  ('NED', 'NETHERLANDS'),
-        ('ARG', 'ARGENTINA'), 
-        ('ENG', 'ENGLAND'), 
-        ('FRA', 'FRANCE'),
-        ('JPN', 'JAPAN'),
+        ('ARG', 'ARGENTINA'),
+        ('CRO', 'CROATIA'),
         ('BRA', 'BRAZIL'),
+        ('ENG', 'ENGLAND'),
+        ('FRA', 'FRANCE'),
         ('ESP', 'SPAIN'),
         ('POR', 'PORTUGAL');
 -- -----------------------------------------------------
@@ -78,33 +78,10 @@ VALUES  ('Quarter-Final', 4),
         ('Semi-final', 2),
         ('Final', 1);
 
--- -----------------------------------------------------
--- INSERINDO NA TABELA `bd_sweepstake`.`sweepstakes`
--- -----------------------------------------------------
-INSERT INTO `sweepstakes` (`punterName`, `idChampion`) 
-VALUES ('Mateus', '6');
 
 -- -----------------------------------------------------
 -- INSERINDO NA TABELA `bd_sweepstake`.`scores`
 -- -----------------------------------------------------
-INSERT INTO `scores` (`idScore`, `idHomeTeam`, `idAwayTeam`, `goalsHome`, `goalsAway`,  `idStage`, `idSweepstake`)
-VALUES (NULL, ?, ?, ?, ?, ?, ?);
--- -----------------------------------------------------
--- SELECT TO GET THE TEAMS`bd_sweepstake`.`teams`
--- -----------------------------------------------------
-
-SELECT * FROM teams;
-
--- -----------------------------------------------------
--- SELECT TO GET THE TEAMS`bd_sweepstake`.`scores`
--- -----------------------------------------------------
-
-SELECT * FROM scores;
-
--- -----------------------------------------------------
--- VIEW TO SEE THE GREATER ID IN TABLE `bd_sweepstake`.`sweepstakes`
--- -----------------------------------------------------
-
 CREATE VIEW greaterIdSweepstake AS SELECT MAX(IdSweepstake) 'maxId' FROM `bd_sweepstake`.`sweepstakes`;
 
 SELECT * FROM greaterIdSweepstake;
@@ -116,6 +93,31 @@ SELECT * FROM greaterIdSweepstake;
 CREATE VIEW numberOfTeams AS SELECT Count(idTeam) 'numberTeams' FROM `bd_sweepstake`.`teams` ;
 
 SELECT * FROM numberOfTeams;
+
+-- -----------------------------------------------------
+-- INSERINDO NA TABELA `bd_sweepstake`.`sweepstakes`
+-- -----------------------------------------------------
+
+INSERT INTO `sweepstakes` (`punterName`, `idChampion`)
+VALUES ('Mateus', '6');
+-- -----------------------------------------------------
+-- SELECT TO GET THE TEAMS`bd_sweepstake`.`teams`
+-- -----------------------------------------------------
+
+INSERT INTO `scores` (`idScore`, `idHomeTeam`, `idAwayTeam`, `goalsHome`, `goalsAway`,  `idStage`, `idSweepstake`)
+VALUES (NULL, ?, ?, ?, ?, ?, ?);
+
+-- -----------------------------------------------------
+-- SELECT TO GET THE TEAMS`bd_sweepstake`.`scores`
+-- -----------------------------------------------------
+
+SELECT * FROM teams;
+
+-- -----------------------------------------------------
+-- VIEW TO SEE THE GREATER ID IN TABLE `bd_sweepstake`.`sweepstakes`
+-- -----------------------------------------------------
+
+SELECT * FROM scores;
 
 -- -----------------------------------------------------
 -- DATABASE DROPING  `bd_sweepstake`

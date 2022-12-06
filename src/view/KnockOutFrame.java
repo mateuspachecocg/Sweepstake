@@ -15,6 +15,9 @@ import java.awt.event.KeyListener;
 import java.io.File;
 import java.io.IOException;
 
+import static view.MainMenu.blackBasic;
+import static view.MainMenu.qatarRed;
+
 public class KnockOutFrame extends JFrame implements KeyListener, ActionListener {
 
     static Color bgColorDark = new Color(87, 50, 101);
@@ -47,6 +50,9 @@ public class KnockOutFrame extends JFrame implements KeyListener, ActionListener
 
         buttonFinish = new JButton("FINISH");
         buttonFinish.setBounds(628, 430, 100, 20);
+        buttonFinish.setBackground(qatarRed);
+        buttonFinish.setFocusable(false);
+        buttonFinish.setEnabled(false);
         buttonFinish.addActionListener(this);
         clickCount = 0;
 
@@ -59,28 +65,26 @@ public class KnockOutFrame extends JFrame implements KeyListener, ActionListener
     }
 
     private void setMainComponents() {
-        topTitle = new JLabel("KnockOut");
-        topTitle.setBounds(0, 0, 89, 29);
+        topTitle = new JLabel("KnockOut Stage", SwingConstants.CENTER);
         topTitle.setFont(poppins);
         topTitle.setForeground(new Color(0x03122B));
 
         topPanel = new JPanel();
         topPanel.setBounds(0, 0, 1500, 37);
         topPanel.setBackground(bgColorLight);
-        topPanel.setLayout(null);
-        topPanel.add(topTitle);
+        topPanel.add(topTitle, SwingConstants.CENTER);
         topPanel.setBorder(BorderFactory.createEtchedBorder());
         topPanel.setBackground(bgColorLight);
 
         bottomPanel = new JPanel();
         bottomPanel.setBounds(0, 40, 1500, 498);
-        bottomPanel.setBackground(bgColorDark);
+        bottomPanel.setBackground(bgColorLight);
         bottomPanel.setLayout(null);
     }
 
     private void getFontPoppins() {
         try {
-            poppins = Font.createFont(Font.TRUETYPE_FONT, new File("Poppins-Medium.ttf")).deriveFont(Font.BOLD,29f);
+            poppins = Font.createFont(Font.TRUETYPE_FONT, new File("Poppins-Medium.ttf")).deriveFont(Font.BOLD,20f);
             GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
             ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("Poppins-Medium.ttf")));
         } catch (IOException e) {
@@ -158,6 +162,10 @@ public class KnockOutFrame extends JFrame implements KeyListener, ActionListener
                 bottomPanel.repaint();
                 matchCardC.setTextFieldDisabled();
                 matchCardE.setTextFieldDisabled();
+            }
+        } else if(keyEvent.getSource() == matchCardD.getHomeTf() ||keyEvent.getSource() == matchCardD.getAwayTf()){
+            if(matchCardD.getWasFilled()){
+                buttonFinish.setEnabled(true);
             }
         }
 
