@@ -10,6 +10,11 @@ public class Team {
 
     private ImageIcon flag;
 
+    public Team() {
+
+        this.flag = new ImageIcon("icons/"+this.abv+".png");
+    }
+
     public Team(int idTeam, String abv, String name) {
         this.idTeam = idTeam;
         this.abv = abv;
@@ -19,7 +24,7 @@ public class Team {
 
     public Team(String abv, ImageIcon img) {
         this.abv = abv;
-        this.name = name;
+        this.name = "";
         this.flag = img;
     }
 

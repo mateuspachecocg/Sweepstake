@@ -134,3 +134,13 @@ SELECT * FROM sweepstakes;
 SELECT sweepstakes.idSweepstake 'idBolao', sweepstakes.punterName 'Nome do Jogador', bd_sweepstake.teams.Name 'CAMPEAO'
 FROM sweepstakes natural join teams where idChampion = idTeam;
 
+
+-- -----------------------------------------------------
+-- SELECT TO IMPLEMENTS THE METHOD FINDALL()
+-- -----------------------------------------------------
+
+SELECT sweepstakes.idSweepstake, sweepstakes.punterName, scores.idStage,teams1.idTeam "idHomeTeam", teams1.Name "nameHome",
+       teams1.Abv "abvHome", scores.goalsHome, scores.goalsAway,teams1.Abv "abvAway", teams2.Name "AwayTeam", teams1.idTeam "idAwayTeam"
+FROM sweepstakes,scores,teams teams1, teams teams2
+WHERE sweepstakes.idSweepstake = scores.idSweepstake AND
+      scores.idHomeTeam = teams1.idTeam AND scores.idAwayTeam = teams2.idTeam;

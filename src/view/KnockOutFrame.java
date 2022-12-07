@@ -51,6 +51,7 @@ public class KnockOutFrame extends JFrame implements KeyListener, ActionListener
         buttonFinish = new JButton("FINISH");
         buttonFinish.setBounds(628, 430, 100, 20);
         buttonFinish.setBackground(qatarRed);
+        buttonFinish.setForeground(Color.white);
         buttonFinish.setFocusable(false);
         buttonFinish.setEnabled(false);
         buttonFinish.addActionListener(this);

@@ -8,6 +8,15 @@ public class Sweepstake {
     private Stage semiFinal;
     private Stage finalStage;
 
+    public Sweepstake(){
+        this.idSweepstake = -1;
+        this.punterName = "";
+
+        this.quarterFinal = new Stage(1, "Quarter-Final", 4);
+        this.semiFinal = new Stage(2, "Semi-Final", 2);
+        this.finalStage = new Stage(3, "Final", 1);
+    }
+
     public Sweepstake(int idSweepstake, String punterName) {
         this.idSweepstake = idSweepstake;
         this.punterName = punterName;

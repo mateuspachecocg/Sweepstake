@@ -23,6 +23,11 @@ public class Score {
         return homeTeam;
     }
 
+    public String toString(){
+        return String.format("%s %d x %d %s",
+                homeTeam.getAbv(), homeGoals,  awayGoals,awayTeam.getAbv());
+    }
+
     public Team getAwayTeam() {
         return awayTeam;
     }

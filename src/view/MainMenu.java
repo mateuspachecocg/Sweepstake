@@ -65,6 +65,9 @@ public class MainMenu extends JFrame implements ActionListener {
             this.dispose();
             String name = JOptionPane.showInputDialog("Punter Name: ");
             new KnockOutFrame(name);
+        } else if(actionEvent.getSource() == btnShow) {
+            this.dispose();
+            new ShowSweepstakesFrame();
         }
     }
 }
