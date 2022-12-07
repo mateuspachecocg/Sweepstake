@@ -71,14 +71,14 @@ public class KnockOutFrame extends JFrame implements KeyListener, ActionListener
         topTitle.setForeground(new Color(0x03122B));
 
         topPanel = new JPanel();
-        topPanel.setBounds(0, 0, 1500, 37);
+        topPanel.setBounds(0, 0, 1347, 37);
         topPanel.setBackground(bgColorLight);
         topPanel.add(topTitle, SwingConstants.CENTER);
         topPanel.setBorder(BorderFactory.createEtchedBorder());
         topPanel.setBackground(bgColorLight);
 
         bottomPanel = new JPanel();
-        bottomPanel.setBounds(0, 40, 1500, 498);
+        bottomPanel.setBounds(0, 40, 1347, 498);
         bottomPanel.setBackground(bgColorLight);
         bottomPanel.setLayout(null);
     }
