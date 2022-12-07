@@ -118,7 +118,7 @@ public class SweepstakeDAO {
 
         try {
             ResultSet result = connection.prepareStatement("SELECT sweepstakes.idSweepstake, sweepstakes.punterName, scores.idStage,teams1.idTeam \"idHomeTeam\", teams1.Name \"nameHome\",\n" +
-                    "       teams1.Abv \"abvHome\", scores.goalsHome, scores.goalsAway,teams1.Abv \"abvAway\", teams2.Name \"nameAway\", teams1.idTeam \"idAwayTeam\"\n" +
+                    "       teams1.Abv \"abvHome\", scores.goalsHome, scores.goalsAway,teams2.Abv \"abvAway\", teams2.Name \"nameAway\", teams1.idTeam \"idAwayTeam\"\n" +
                     "FROM sweepstakes,scores,teams teams1, teams teams2\n" +
                     "WHERE sweepstakes.idSweepstake = scores.idSweepstake AND\n" +
                     "      scores.idHomeTeam = teams1.idTeam AND scores.idAwayTeam = teams2.idTeam;").executeQuery();
