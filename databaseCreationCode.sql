@@ -67,7 +67,7 @@ VALUES  ('NED', 'NETHERLANDS'),
         ('BRA', 'BRAZIL'),
         ('ENG', 'ENGLAND'),
         ('FRA', 'FRANCE'),
-        ('ESP', 'SPAIN'),
+        ('MAR', 'MOROCCO'),
         ('POR', 'PORTUGAL');
 -- -----------------------------------------------------
 -- INSERINDO NA TABELA `bd_sweepstake`.`stages`
@@ -144,3 +144,6 @@ SELECT sweepstakes.idSweepstake, sweepstakes.punterName, scores.idStage,teams1.i
 FROM sweepstakes,scores,teams teams1, teams teams2
 WHERE sweepstakes.idSweepstake = scores.idSweepstake AND
       scores.idHomeTeam = teams1.idTeam AND scores.idAwayTeam = teams2.idTeam;
+
+
+SELECT * FROM teams;
