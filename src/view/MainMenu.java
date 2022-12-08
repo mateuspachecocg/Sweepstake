@@ -32,7 +32,7 @@ public class MainMenu extends JFrame implements ActionListener {
         btnNew.addActionListener(this);
         btnShow.addActionListener(this);
         btnImport.addActionListener(this);
-        btnShow.addActionListener(this);
+        btnExport.addActionListener(this);
         
         this.personalizingButtons();
         
@@ -80,6 +80,9 @@ public class MainMenu extends JFrame implements ActionListener {
         } else if(actionEvent.getSource() == btnShow) {
             this.dispose();
             new ShowSweepstakesFrame();
+        } else if(actionEvent.getSource() == btnExport) {
+            this.dispose();
+            new ExportFrame();
         }
     }
 }

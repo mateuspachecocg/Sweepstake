@@ -28,6 +28,11 @@ public class Score {
                 homeTeam.getAbv(), homeGoals,  awayGoals,awayTeam.getAbv());
     }
 
+    public String toStringFileFormated(){
+        return String.format("%s;%d;%s;%d",
+                homeTeam.getAbv(), homeGoals, awayTeam.getAbv(), awayGoals);
+    }
+
     public Team getAwayTeam() {
         return awayTeam;
     }

@@ -4,6 +4,8 @@ import model.Score;
 import model.Sweepstake;
 import model.Team;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -159,6 +161,37 @@ public class SweepstakeDAO {
         }
 
         return swptList;
+    }
+
+
+    public boolean exportToFile(String fileName) {
+
+        fileName = fileName.isEmpty() ? "bd_export" : fileName;
+        try {
+
+            FileWriter fileWriter = new FileWriter(fileName+".txt");
+            String strFormatted;
+            for(Sweepstake swpt : this.findAll()) {
+                strFormatted =  String.format("%s;%s;%s;%s;%s;%s;%s;%s;%s\n",
+                        swpt.getPunterName().toUpperCase(),
+                        swpt.getQuarterFinal().getScoreByIndex(0).toStringFileFormated(),
+                        swpt.getQuarterFinal().getScoreByIndex(1).toStringFileFormated(),
+                        swpt.getQuarterFinal().getScoreByIndex(2).toStringFileFormated(),
+                        swpt.getQuarterFinal().getScoreByIndex(3).toStringFileFormated(),
+                        swpt.getSemiFinal().getScoreByIndex(0).toStringFileFormated(),
+                        swpt.getSemiFinal().getScoreByIndex(1).toStringFileFormated(),
+                        swpt.getFinalStage().getScoreByIndex(0).toStringFileFormated(),
+                        swpt.getFinalStage().getScoreByIndex(0).winnerTeam().getAbv()
+                );
+                fileWriter.write(strFormatted);
+            }
+            fileWriter.close();
+            return true;
+        } catch (IOException e) {
+            System.out.println("An error occurred");
+            e.printStackTrace();
+            return false;
+        }
     }
 
 
