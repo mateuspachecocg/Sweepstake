@@ -7,7 +7,7 @@
 
 <div align="center">
 
-system for you to try to hit the scores of the cup games
+A system for you to try to hit the scores of the 2022 world cup games
 
 ![Screenshot](/screenshots/mainmenu.png)
 </div>
