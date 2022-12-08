@@ -61,6 +61,8 @@ public class KnockOutFrame extends JFrame implements KeyListener, ActionListener
         bottomPanel.add(buttonFinish);
         this.add(topPanel);
         this.add(bottomPanel);
+
+        this.setLocationRelativeTo(null);
         this.setResizable(false);
         this.setVisible(true);
     }

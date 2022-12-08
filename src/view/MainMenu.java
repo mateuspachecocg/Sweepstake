@@ -36,7 +36,7 @@ public class MainMenu extends JFrame implements ActionListener {
         this.add(btnShow);
         this.add(btnImport);
         this.add(btnExport);
-
+        this.setLocationRelativeTo(null);
         this.setResizable(false);
         this.setVisible(true);
 
