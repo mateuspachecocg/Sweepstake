@@ -40,8 +40,9 @@ public class KnockOutFrame extends JFrame implements KeyListener, ActionListener
         this.setLayout(null);
         this.setMainComponents();
 
-        int id = 1 + new SweepstakeDAO().getGreaterSweepstakeId();
-        sweepstake = new Sweepstake(id, punterName);
+
+        sweepstake = new Sweepstake(punterName);
+
         this.getAvailableTeams();
         sweepstake.getQuarterFinal().setScoreByIndex(0, new Score(teams[0], teams[1]));
         sweepstake.getQuarterFinal().setScoreByIndex(1, new Score(teams[2], teams[3]));

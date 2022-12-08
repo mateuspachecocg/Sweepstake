@@ -4,10 +4,13 @@ import model.Score;
 import model.Sweepstake;
 import model.Team;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class SweepstakeDAO {
 
@@ -67,6 +70,7 @@ public class SweepstakeDAO {
     }
 
     public void insert(Sweepstake swpt) {
+
         try {
             Connection connection = new ConnectionFactory().getConnection();
 
@@ -167,6 +171,7 @@ public class SweepstakeDAO {
     public boolean exportToFile(String fileName) {
 
         fileName = fileName.isEmpty() ? "bd_export" : fileName;
+
         try {
 
             FileWriter fileWriter = new FileWriter(fileName+".txt");
@@ -193,6 +198,47 @@ public class SweepstakeDAO {
             return false;
         }
     }
+
+    public boolean importFromFile(File data) {
+        ArrayList<Sweepstake> swptList = new ArrayList<Sweepstake>();
+        try {
+            Scanner myScanner = new Scanner(data);
+            Sweepstake swpt;
+            while(myScanner.hasNextLine()) {
+                String[] strSplit =  myScanner.nextLine().split(";");
+
+                swpt = new Sweepstake(strSplit[0]);
+                swpt.getQuarterFinal().setScoreByIndex(0, new Score(this.getTeamByAbv(strSplit[1]), this.getTeamByAbv(strSplit[3]), Integer.parseInt(strSplit[2]), Integer.parseInt(strSplit[4])));
+                swpt.getQuarterFinal().setScoreByIndex(1, new Score(this.getTeamByAbv(strSplit[5]), this.getTeamByAbv(strSplit[7]), Integer.parseInt(strSplit[6]), Integer.parseInt(strSplit[8])));
+                swpt.getQuarterFinal().setScoreByIndex(2, new Score(this.getTeamByAbv(strSplit[9]), this.getTeamByAbv(strSplit[11]), Integer.parseInt(strSplit[10]), Integer.parseInt(strSplit[12])));
+                swpt.getQuarterFinal().setScoreByIndex(3, new Score(this.getTeamByAbv(strSplit[13]), this.getTeamByAbv(strSplit[15]), Integer.parseInt(strSplit[14]), Integer.parseInt(strSplit[16])));
+
+                swpt.getSemiFinal().setScoreByIndex(0, new Score(this.getTeamByAbv(strSplit[17]), this.getTeamByAbv(strSplit[19]), Integer.parseInt(strSplit[18]), Integer.parseInt(strSplit[20])));
+                swpt.getSemiFinal().setScoreByIndex(1, new Score(this.getTeamByAbv(strSplit[21]), this.getTeamByAbv(strSplit[23]), Integer.parseInt(strSplit[22]), Integer.parseInt(strSplit[24])));
+
+                swpt.getFinalStage().setScoreByIndex(0, new Score(this.getTeamByAbv(strSplit[25]), this.getTeamByAbv(strSplit[27]), Integer.parseInt(strSplit[26]), Integer.parseInt(strSplit[28])));
+
+                this.insert(swpt);
+            }
+
+
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+
+        return false;
+    }
+
+    //Method to return the id of a team based on abreviation
+    public Team getTeamByAbv(String teamAbv) {
+        for(Team team : tableTeam) {
+            if(team.getAbv().equals(teamAbv)) {
+                return team;
+            }
+        }
+        return null;
+    }
+
 
 
     public Team[] getTableTeam() {

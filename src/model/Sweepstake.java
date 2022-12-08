@@ -1,5 +1,7 @@
 package model;
 
+import control.SweepstakeDAO;
+
 public class Sweepstake {
 
     private int idSweepstake;
@@ -21,6 +23,14 @@ public class Sweepstake {
         this.idSweepstake = idSweepstake;
         this.punterName = punterName;
 
+        this.quarterFinal = new Stage(1, "Quarter-Final", 4);
+        this.semiFinal = new Stage(2, "Semi-Final", 2);
+        this.finalStage = new Stage(3, "Final", 1);
+    }
+
+    public Sweepstake(String punterName) {
+        this.punterName = punterName;
+        this.idSweepstake = 1 + new SweepstakeDAO().getGreaterSweepstakeId();
         this.quarterFinal = new Stage(1, "Quarter-Final", 4);
         this.semiFinal = new Stage(2, "Semi-Final", 2);
         this.finalStage = new Stage(3, "Final", 1);
