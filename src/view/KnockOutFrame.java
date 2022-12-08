@@ -49,7 +49,8 @@ public class KnockOutFrame extends JFrame implements KeyListener, ActionListener
         sweepstake.getQuarterFinal().setScoreByIndex(3, new Score(teams[6], teams[7]));
 
         buttonFinish = new JButton("FINISH");
-        buttonFinish.setBounds(628, 430, 100, 20);
+
+        buttonFinish.setBounds(578, 430, 200, 30);
         buttonFinish.setBackground(qatarRed);
         buttonFinish.setForeground(Color.white);
         buttonFinish.setFocusable(false);

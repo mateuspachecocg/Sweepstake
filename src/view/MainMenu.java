@@ -12,30 +12,36 @@ public class MainMenu extends JFrame implements ActionListener {
     private JButton btnShow;
     private JButton btnImport;
     private JButton btnExport;
-
+    private JPanel panelButtons;
     public MainMenu() {
         super("Welcome to World Cup Sweepstake");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setSize(400,300);
+        this.setSize(420,360);
         this.setBackground(blackBasic);
-        this.setLayout(new FlowLayout(FlowLayout.CENTER, 80, 25));
+        this.setLayout(null);
+        
+        panelButtons = new JPanel(new GridLayout(4,1, 10, 10));
+        panelButtons.setBounds(10, 10, 400, 300);
 
-
-        btnNew = new JButton("Create a new Sweepstake");
-        btnShow = new JButton("Show all Sweepstake");
-        btnImport = new JButton("Import from a file");
-        btnExport = new JButton("Export to a file");
+        btnNew = new JButton("CREATE A NEW SWEEPSTAKE");
+        btnShow = new JButton("SHOW ALL SWEEPSTAKE");
+        btnImport = new JButton("IMPORTA FROM A FILE");
+        btnExport = new JButton("EXPORT TO A FILE");
 
 
         btnNew.addActionListener(this);
         btnShow.addActionListener(this);
         btnImport.addActionListener(this);
         btnShow.addActionListener(this);
+        
         this.personalizingButtons();
-        this.add(btnNew);
-        this.add(btnShow);
-        this.add(btnImport);
-        this.add(btnExport);
+        
+        panelButtons.add(btnNew);
+        panelButtons.add(btnShow);
+        panelButtons.add(btnImport);
+        panelButtons.add(btnExport);
+
+        this.add(panelButtons);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         this.setVisible(true);
@@ -46,16 +52,22 @@ public class MainMenu extends JFrame implements ActionListener {
         btnShow.setForeground(Color.white);
         btnShow.setBackground(qatarRed);
         btnShow.setFocusable(false);
+        btnShow.setBorder(BorderFactory.createEtchedBorder());
+        
         btnNew.setForeground(Color.white);
         btnNew.setBackground(qatarRed);
         btnNew.setFocusable(false);
+        btnNew.setBorder(BorderFactory.createEtchedBorder());
+        
         btnImport.setForeground(Color.white);
         btnImport.setBackground(qatarRed);
         btnImport.setFocusable(false);
+        btnImport.setBorder(BorderFactory.createEtchedBorder());
+        
         btnExport.setForeground(Color.white);
         btnExport.setBackground(qatarRed);
-        btnExport.setForeground(Color.white);
         btnExport.setFocusable(false);
+        btnExport.setBorder(BorderFactory.createEtchedBorder());
 
     }
 
