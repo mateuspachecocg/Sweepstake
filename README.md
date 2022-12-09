@@ -26,14 +26,19 @@ The system was developed using the object-oriented programming paradigm (OOP), t
 
 The Sweepstake system was developed to Create, read, update and delete scores in a database.
 
-# Main Menu Frame
+##  Graphical User Interface (GUI)
+
+A graphical user interface presents a user-friendly mechanism for interacting with an application.
+A GUI component is an object with which the user interacts via the mouse, the keyboard or another form of input, such as voice recognition
+
+## Main Menu Frame
 
 <div align="center">
 
 ![Screenshot](/images/mainmenu.png)
 </div>
 
-# KnockOut Stage Frame
+## KnockOut Stage Frame
 
 <div align="center">
 
@@ -41,7 +46,7 @@ The Sweepstake system was developed to Create, read, update and delete scores in
 ![Screenshot](/images/knockoutEx.png)
 </div>
 
-# Show All Sweepstakes on BD Frame
+## Show All Sweepstakes on BD Frame
 
 <div align="center">
 
