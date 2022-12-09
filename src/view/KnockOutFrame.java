@@ -89,9 +89,9 @@ public class KnockOutFrame extends JFrame implements KeyListener, ActionListener
 
     private void getFontPoppins() {
         try {
-            poppins = Font.createFont(Font.TRUETYPE_FONT, new File("Poppins-Medium.ttf")).deriveFont(Font.BOLD,20f);
+            poppins = Font.createFont(Font.TRUETYPE_FONT, new File("/home/mateuspx/eclipse-workspace/sweepstake/Poppins-Medium.ttf")).deriveFont(Font.BOLD,20f);
             GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-            ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("Poppins-Medium.ttf")));
+            ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("/home/mateuspx/eclipse-workspace/sweepstake/Poppins-Medium.ttf")));
         } catch (IOException e) {
             throw new RuntimeException(e);
         } catch (FontFormatException e) {

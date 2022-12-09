@@ -19,7 +19,7 @@ public class Team {
         this.idTeam = idTeam;
         this.abv = abv;
         this.name = name;
-        this.flag = new ImageIcon("icons/"+this.abv+".png");
+        this.flag = new ImageIcon("/home/mateuspx/eclipse-workspace/sweepstake/icons/"+this.abv+".png");
     }
 
     public Team(String abv, ImageIcon img) {
