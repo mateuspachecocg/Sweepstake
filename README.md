@@ -9,7 +9,7 @@
 
 A system for you to try to hit the scores of the 2022 world cup games
 
-![Screenshot](/screenshots/mainmenu.png)
+![Screenshot](/images/mainmenu.png)
 </div>
 
 
@@ -30,22 +30,22 @@ The Sweepstake system was developed to Create, read, update and delete scores in
 
 <div align="center">
 
-![Screenshot](/screenshots/mainmenu.png)
+![Screenshot](/images/mainmenu.png)
 </div>
 
 # KnockOut Stage Frame
 
 <div align="center">
 
-![Screenshot](/screenshots/knockout.png)
-![Screenshot](/screenshots/knockoutEx.png)
+![Screenshot](/images/knockout.png)
+![Screenshot](/images/knockoutEx.png)
 </div>
 
 # Show All Sweepstakes on BD Frame
 
 <div align="center">
 
-![Screenshot](/screenshots/showallsweepstakes.png)
+![Screenshot](/images/showallsweepstakes.png)
 </div>
 
 
