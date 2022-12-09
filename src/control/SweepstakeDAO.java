@@ -168,13 +168,11 @@ public class SweepstakeDAO {
     }
 
 
-    public boolean exportToFile(String fileName) {
-
-        fileName = fileName.isEmpty() ? "bd_export" : fileName;
+    public boolean exportToFile(File file) {
 
         try {
 
-            FileWriter fileWriter = new FileWriter(fileName+".txt");
+            FileWriter fileWriter = new FileWriter(file);
             String strFormatted;
             for(Sweepstake swpt : this.findAll()) {
                 strFormatted =  String.format("%s;%s;%s;%s;%s;%s;%s;%s;%s\n",
@@ -219,14 +217,14 @@ public class SweepstakeDAO {
                 swpt.getFinalStage().setScoreByIndex(0, new Score(this.getTeamByAbv(strSplit[25]), this.getTeamByAbv(strSplit[27]), Integer.parseInt(strSplit[26]), Integer.parseInt(strSplit[28])));
 
                 this.insert(swpt);
-            }
 
+            }
+            return true;
 
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
 
-        return false;
     }
 
     //Method to return the id of a team based on abreviation

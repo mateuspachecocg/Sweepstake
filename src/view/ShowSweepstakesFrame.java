@@ -55,24 +55,6 @@ public class ShowSweepstakesFrame extends JFrame implements ActionListener {
         this.setVisible(true);
     }
 
-    private void creatingTable(ArrayList<Sweepstake> swptList) {
-        String[] columnNames = { "Punter Name", "Quarter-Final", "Semi-Final", "Final", "Champion" };
-
-        Object[][] data = new Object[swptList.size()][5];
-        int index = 0;
-        for(Sweepstake swpt : swptList)  {
-            data[index][0] = swpt.getPunterName().toUpperCase();
-            data[index][1] = swpt.getQuarterFinal();
-            data[index][2] =  swpt.getSemiFinal().getScoreByIndex(0).toString();
-            data[index][3] = swpt.getFinalStage().getScoreByIndex(0).toString();
-            data[index][4] = swpt.getFinalStage().getScoreByIndex(0).winnerTeam().getName();
-            index++;
-        }
-
-        table = new JTable(data, columnNames);
-        table.setPreferredScrollableViewportSize(new Dimension(500, 300));
-        table.setFillsViewportHeight(true);
-    }
 
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
