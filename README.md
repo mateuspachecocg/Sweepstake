@@ -58,6 +58,6 @@ A GUI component is an object with which the user interacts via the mouse, the ke
 ## Project Presentation Video
 <div align="center">
 
-[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/ZiIitmrKbmU/0.jpg)](https://www.youtube.com/watch?v=ZiIitmrKbmU "Project Presenetation Video")
-- [SCRIPT OF THE VIDEO](https://github.com/mateuspachecocg/GoalkeeperRatingSystem/blob/main/SCRIPT%20GRS%20PRESENTATION.pdf)
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/CAgSshiAd0E/0.jpg)](https://youtu.be/CAgSshiAd0E "Project Presenetation Video")
+
 </div>

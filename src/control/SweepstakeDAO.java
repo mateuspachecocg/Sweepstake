@@ -59,7 +59,8 @@ public class SweepstakeDAO {
         Connection connection = new ConnectionFactory().getConnection();
 
         try {
-            ResultSet result = connection.prepareStatement("SELECT * FROM `greaterIdSweepstake`;").executeQuery();
+            ResultSet result = connection.prepareStatement("" +
+                    "").executeQuery();
             if(result.next()) {
                 return result.getInt("maxId");
             }
